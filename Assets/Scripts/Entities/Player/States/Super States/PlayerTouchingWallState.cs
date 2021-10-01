@@ -40,12 +40,12 @@ public class PlayerTouchingWallState : PlayerState
         if(isExitingState)
             return;
 
-        if(jumpInput)
-        {
-            player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
-            stateMachine.ChangeState(player.WallJumpState);
-        }
-        else if(isGrounded)
+        // if(jumpInput)
+        // {
+        //     player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
+        //     stateMachine.ChangeState(player.WallJumpState);
+        // }
+        if(isGrounded)
             stateMachine.ChangeState(player.IdleState);
 
         else if (!isTouchingWall || xInput == -core.Movement.FacingDirection) // || (xInput != core.Movement.FacingDirection && !grabInput)

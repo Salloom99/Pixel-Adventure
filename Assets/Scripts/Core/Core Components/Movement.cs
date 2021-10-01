@@ -6,17 +6,19 @@ using CoreStuff;
 public class Movement : CoreComponent
 {
     public Rigidbody2D RB { get; private set; }
-
     public int FacingDirection { get; private set; }
-
     public bool CanSetVelocity { get; set; }
-
     public Vector2 CurrentVelocity { get; private set; }
-
     public float surfaceFriction { get; private set; }
 
-    private Vector2 workspace;
+    #region getters
+    public float WallJumpTime { get=> data.wallJumpTime; }
+    public float CoyoteTime { get => data.coyoteTime; }
+    public int AmountOfJumps { get => data.amountOfJumps; }
+    #endregion
 
+    [SerializeField] private MovementData data;
+    private Vector2 workspace;
     private Vector2 VelZero = Vector2.zero;
 
     protected override void Awake()
@@ -55,21 +57,34 @@ public class Movement : CoreComponent
         SetFinalVelocity();
     }
 
-    public void SetVelocityX(float velocity)
+    public void OldSetVelocityX(float velocity)
     {
         workspace.Set(velocity, CurrentVelocity.y);
         if (CanSetVelocity)
         {
-            //RB.velocity = workspace;
-            RB.velocity = Vector2.SmoothDamp(CurrentVelocity,workspace,ref VelZero,0.1f);
-            CurrentVelocity = RB.velocity;
+            // RB.velocity = workspace;
+            RB.velocity = Vector2.SmoothDamp(CurrentVelocity,workspace,ref VelZero,0.15f/* data.movementSmooth */);
+            // CurrentVelocity = RB.velocity;
+            CurrentVelocity = workspace;
         }        
+    }
+
+    public void SetVelocityX(float xInput)
+    {
+        workspace.Set(data.moveAccel*xInput, 0f);
+        RB.AddForce(workspace);
+
+        if(Mathf.Abs(RB.velocity.x) > data.maxMoveVel)
+            RB.velocity = new Vector2(Mathf.Sign(RB.velocity.x) * data.maxMoveVel,RB.velocity.y);
+
+        CurrentVelocity = RB.velocity;   
     }
 
     public void SetVelocityY(float velocity)
     {
         workspace.Set(CurrentVelocity.x, velocity);
-        SetFinalVelocity();
+        if(CurrentVelocity.y < velocity)
+            SetFinalVelocity();
     }
 
     private void SetFinalVelocity()
@@ -81,30 +96,97 @@ public class Movement : CoreComponent
         }        
     }
 
-    public void Jump(float jumpForce)
+    public void ApplyGroundLinearDrag(int xInput)
     {
-        RB.velocity = new Vector2(RB.velocity.x,0);
-        RB.AddForce(Vector2.up * jumpForce);
+        // if(xInput == 0)
+        //     RB.drag = data.groundLinearDrag;
+        // else
+        //     RB.drag = 0f;
+
+        if(xInput == 0)
+            RB.velocity = new Vector2(RB.velocity.x*(1-data.groundLinearDrag),RB.velocity.y);
+        
     }
 
-    public void WallJump(float jumpForce,Vector2 direction,int target)
+    public void ApplyAirLinearDrag()
     {
-        workspace.Set(direction.x*target,direction.y);
-        RB.velocity = new Vector2(RB.velocity.x,0);
-        RB.AddForce(workspace * jumpForce);
+        // if(RB.velocity.y < 0)
+            RB.velocity = new Vector2(RB.velocity.x*(1-data.airLinearDrag),RB.velocity.y);
     }
+
+    public void Jump()
+    {
+        workspace.Set(RB.velocity.x,data.jumpForce);
+        RB.velocity = workspace;
+        //RB.AddForce(Vector2.up * data.jumpForce,ForceMode2D.Impulse);
+    }
+
+    public void AddVelocityUp(float velocity)
+    {
+        RB.gravityScale = data.normalMultiplier;
+        workspace.Set(RB.velocity.x,velocity);
+        RB.velocity = workspace;
+    }
+
+    public void WallJump(int target)
+    {
+        workspace.Set(data.wallJumpAngle.x*target,data.wallJumpAngle.y);
+        RB.velocity = workspace*data.jumpForce;/* Vector2.zero; */
+        // RB.AddForce(workspace * data.jumpForce,ForceMode2D.Impulse);
+    }
+
+    public void SetFallMultiplier(FallMultiplier value)
+    {
+        switch(value)
+        {
+            case FallMultiplier.LowJump:
+                RB.gravityScale = data.lowJumpMultiplier;
+                break;
+            case FallMultiplier.Fall:
+                RB.gravityScale = data.fallMultiplier;
+                break;
+            default:
+                RB.gravityScale = data.normalMultiplier;
+                break;
+        }
+
+    }
+
+    public void setGravity(float value)
+    {
+        RB.gravityScale = value;
+    }
+
+    public void Slide()
+    {
+        RB.velocity = Vector2.down*data.wallSlideVelocity;
+    }
+
+    public float getDeadZone()=> data.deadZone;
 
     public void SetFriction(float value)
     {
         surfaceFriction = value;
     }
 
-    public void CheckIfShouldFlip(int xInput)
+    public void OldCheckIfShouldFlip(int xInput)
     {
         if (xInput != 0 && xInput != FacingDirection)
         {
             Flip();
         }
+    }
+
+    public void OldFlip()
+    {
+        FacingDirection *= -1;
+        RB.transform.Rotate(0.0f, 180.0f, 0.0f);
+    }
+
+    public void CheckIfShouldFlip(int xInput)
+    {
+        if (Mathf.Sign(CurrentVelocity.x) != FacingDirection && Mathf.Abs(CurrentVelocity.x) > data.deadZone)
+            Flip();
     }
 
     public void Flip()
@@ -114,4 +196,11 @@ public class Movement : CoreComponent
     }
 
     #endregion
+
+
+    public enum FallMultiplier{
+        LowJump,
+        Fall,
+        Normal
+    }
 }

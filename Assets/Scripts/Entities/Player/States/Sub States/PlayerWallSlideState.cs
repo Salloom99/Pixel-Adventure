@@ -15,12 +15,18 @@ public class PlayerWallSlideState : PlayerTouchingWallState
         if(isExitingState)
             return;
             
-        core.Movement.SetVelocityY(-playerData.wallSlideVelocity * core.Movement.surfaceFriction);
+        movement.Slide();
 
         player.Anim.SetFloat("yVelocity",core.Movement.CurrentVelocity.y);
 
         // if(grabInput && yInput == 0)
         //     stateMachine.ChangeState(player.WallGrabState);
+
+        if(jumpInput)
+        {
+            player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
+            stateMachine.ChangeState(player.WallJumpState);
+        }
         
         
     }

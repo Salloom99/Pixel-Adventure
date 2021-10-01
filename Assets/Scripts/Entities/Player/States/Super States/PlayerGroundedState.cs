@@ -12,7 +12,8 @@ public class PlayerGroundedState : PlayerState
     private bool JumpInput;
     private bool grabInput;
     private bool isGrounded;
-    private bool isTouchingWall;
+    protected bool isTouchingWall;
+    protected bool isTouchingWallBack;
     private bool isTouchingLedge;
     private bool dashInput;
 
@@ -26,6 +27,7 @@ public class PlayerGroundedState : PlayerState
 
         isGrounded = core.CollisionSenses.Ground;
         isTouchingWall = core.CollisionSenses.WallFront;
+        isTouchingWallBack = core.CollisionSenses.WallBack;
         // isTouchingLedge = core.CollisionSenses.LedgeHorizontal;
         // isTouchingCeiling = core.CollisionSenses.Ceiling;
     }
@@ -35,10 +37,12 @@ public class PlayerGroundedState : PlayerState
         base.Enter();
 
         player.JumpState.Resetjumps();
-
         player.Anim.SetFloat("yVelocity",0);
         player.Anim.SetBool("doubleJump",false);
         // player.DashState.ResetCanDash();
+
+        movement.SetFallMultiplier(Movement.FallMultiplier.Normal);
+
     }
 
     public override void Exit()
@@ -55,6 +59,13 @@ public class PlayerGroundedState : PlayerState
         JumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
+
+
+        movement.ApplyGroundLinearDrag(xInput);
+
+        // if(xInput ==0)
+        //     movement.ApplyDrag(Time.deltaTime);
+        
 
         // if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
         // {

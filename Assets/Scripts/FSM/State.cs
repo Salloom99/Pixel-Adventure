@@ -9,6 +9,9 @@ namespace FiniteStateMachine
     {
         protected Core core;
 
+        protected Movement movement {get => core.Movement;}
+        protected CollisionSenses collisionSenses {get => core.CollisionSenses;}
+
         protected Entity entity;
         protected FSM stateMachine;
         protected Data data;

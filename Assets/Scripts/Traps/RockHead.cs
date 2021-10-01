@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CoreStuff;
 
 public class RockHead : MonoBehaviour
 {
-
-    
-    
     [SerializeField] private TrapsData data;
     [SerializeField] private bool Linear;
     [SerializeField] private float Speed;
@@ -17,6 +15,8 @@ public class RockHead : MonoBehaviour
     
     private Animator Anim;
     private Rigidbody2D RockHeadRB;
+    private Core core;
+    private GameObject player;
 
 
     private bool waiting;
@@ -36,11 +36,32 @@ public class RockHead : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.position.y >transform.position.y && other.gameObject.tag =="Player")
-            other.transform.parent.parent = transform;
+        {
+            other.transform.parent = transform;
+            core = other.gameObject.GetComponentInChildren<Core>();
+        }
+
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        if( direction == Vector2.up && core.CollisionSenses.Ceiling ||
+            direction == Vector2.down && core.CollisionSenses.Ground ||
+            direction == Vector2.left && core.Movement.FacingDirection == 1 ? core.CollisionSenses.WallFront : core.CollisionSenses.WallBack ||
+            direction == Vector2.right && core.Movement.FacingDirection == 1 ? core.CollisionSenses.WallFront : core.CollisionSenses.WallBack)
+            {StartCoroutine(cameraShake.Shake());
+            other.gameObject.GetComponent<Collider2D>().enabled = false;
+            other.gameObject.GetComponent<Player>().enabled = false;
+            Destroy(other.transform.GetChild(0).gameObject);
+            Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(rb.velocity.x,20);
+            rb.AddTorque(rb.velocity.x);
+            player = other.gameObject;
+
+        Invoke("DestroyOB",2f);}
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        other.transform.parent.parent = null;
+        other.transform.parent = null;
     }
 
     private void Update() 
@@ -91,6 +112,11 @@ public class RockHead : MonoBehaviour
     {
         waiting = false;
         velocity=0;
+    }
+
+    private void DestroyOB()
+    {
+        Destroy(player);
     }
 
 }

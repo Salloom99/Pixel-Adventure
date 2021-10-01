@@ -13,12 +13,17 @@ public class PlayerMoveState : PlayerGroundedState
         base.LogicUpdate();
 
         core.Movement.CheckIfShouldFlip(xInput);
+        // core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
+
         //player.particleSystem.Play();
 
         // if (!isExitingState)
         //     return;
         
-        if (xInput == 0)
+        // if (xInput == 0)
+        //     stateMachine.ChangeState(player.IdleState);
+
+        if(Mathf.Abs(core.Movement.CurrentVelocity.x) < movement.getDeadZone())
             stateMachine.ChangeState(player.IdleState);
     }
 
@@ -26,6 +31,6 @@ public class PlayerMoveState : PlayerGroundedState
     {
         base.PhysicsUpdate();
 
-        core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
+        core.Movement.SetVelocityX(xInput);
     }
 }

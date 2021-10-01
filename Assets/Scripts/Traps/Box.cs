@@ -12,12 +12,23 @@ public class Box : Interactable,IBreakable
 
     [SerializeField] private GameObject[] parts;
     [SerializeField] private FruitsData fruitsData;
+    [SerializeField] private TrapsData trapsData;
     private List<GameObject> summonedFruits;
 
-    public IEnumerator Break()
+
+    protected override void OnCollisionEnter2D(Collision2D other)
+    {   
+        if(other.gameObject.CompareTag("Player"))
+        {
+            playerRB = other.gameObject.GetComponent<Rigidbody2D>();
+        }
+            
+        base.OnCollisionEnter2D(other);
+    }
+
+    public void Break()
     {
         GameObject[] fruits = fruitsData.fruits;
-        yield return new WaitForSeconds(0.1f);
 
         summonedFruits = new List<GameObject>();
         for (int i = 0; i < friutsNum; i++)
@@ -31,11 +42,12 @@ public class Box : Interactable,IBreakable
 
         foreach(GameObject part in parts)
         {
-            part.GetComponent<Rigidbody2D>().AddForce((this.transform.position-part.transform.position).normalized*Random.Range(300,600));
-            part.GetComponent<Rigidbody2D>().AddTorque(Random.Range(0,50)*Random.Range(-1,1));
+            Rigidbody2D PartRB = part.GetComponent<Rigidbody2D>();
+            Vector2 direction = (this.transform.localPosition-part.transform.localPosition).normalized;
+            PartRB.velocity = direction*trapsData.explosionVelocity;
         }
         for(int i=0;i<summonedFruits.Count;i++)
-            summonedFruits[i].GetComponent<Rigidbody2D>().AddForce(Vector2.right*Random.Range(-1,1)*Random.Range(300,500));
+            summonedFruits[i].GetComponent<Rigidbody2D>().velocity =Vector2.right*Random.Range(-1,1)*Random.Range(5,20);
     
     }
 
@@ -44,17 +56,20 @@ public class Box : Interactable,IBreakable
         shake = true;
         base.Interact(other);
         
-        playerRB = other.gameObject.GetComponent<Rigidbody2D>();
-        
-            Hits++;
-            GetComponent<Animator>().Play("Hit");
+        Hits++;
+        GetComponent<Animator>().Play("Hit");
 
-            if(IfBelow(other.transform.position))
-                playerRB.velocity = new Vector2(playerRB.velocity.x,0);
-            else if (IfAbove(other.transform.position))
-                playerRB.AddForce(Vector2.up*1200);
+        if(IfBelow(other.transform.position))
+            playerRB.velocity = new Vector2(playerRB.velocity.x,0);
+        else if (IfAbove(other.transform.position))
+            playerRB.velocity = new Vector2(playerRB.velocity.x,trapsData.bounceVelocity);
 
-            if(Hits >= maxHits)
-                StartCoroutine(Break());
+        if(Hits >= maxHits)
+            Invoke("Break",0.2f);
+    }
+
+    public override bool CheckInteraction(Vector2 interactor)
+    {
+        return/*  Mathf.Abs(playerRB.velocity.y) > 5f && */(IfAbove(interactor) || IfBelow(interactor));
     }
 }

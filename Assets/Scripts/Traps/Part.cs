@@ -26,6 +26,8 @@ public class Part : MonoBehaviour
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
             falled = true;
+
+        GetComponent<Rigidbody2D>().freezeRotation = false;
         
     }
 

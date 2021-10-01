@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d9225a67392674db8d2b2c4307a838, type: 3}
+  m_Name: MovementData
+  m_EditorClassIdentifier: 
+  maxMoveVel: 10
+  moveAccel: 35
+  groundLinearDrag: 0.1
+  deadZone: 0.05
+  movementSmooth: 0.1
+  jumpForce: 21
+  amountOfJumps: 2
+  wallJumpForce: 25
+  wallJumpTime: 0.1
+  wallJumpAngle: {x: 0.1, y: 1}
+  coyoteTime: 0.2
+  normalMultiplier: 7
+  fallMultiplier: 8
+  lowJumpMultiplier: 8
+  airLinearDrag: 0.1
+  wallSlideVelocity: 3

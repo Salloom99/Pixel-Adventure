@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a969b0c6683e374a813e3a1cdaffd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHits: 5
+  maxHits: 1
   friutsNum: 5
   parts:
   - {fileID: 2129513977015014881}
@@ -150,6 +150,7 @@ MonoBehaviour:
   - {fileID: 8254145319877729690}
   - {fileID: 7244146479536778266}
   fruitsData: {fileID: 11400000, guid: ce369094a1bd6c5408c4776bf539ac8d, type: 2}
+  trapsData: {fileID: 11400000, guid: 9b614346a5f3fa944b6f66c3a0086306, type: 2}
 --- !u!1 &808819103974631487
 GameObject:
   m_ObjectHideFlags: 0

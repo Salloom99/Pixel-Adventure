@@ -7,6 +7,7 @@ public class PlayerAbilityState : PlayerState
 
     protected bool isAbilityDone;
     protected bool isGrounded;
+    protected bool isTouchingWall;
 
 
     public PlayerAbilityState(Entity entity, string animBoolName) : base(entity, animBoolName)
@@ -18,6 +19,7 @@ public class PlayerAbilityState : PlayerState
         base.DoChecks();
 
         isGrounded = core.CollisionSenses.Ground;
+        isTouchingWall = core.CollisionSenses.WallFront;
     }
 
     public override void Enter()

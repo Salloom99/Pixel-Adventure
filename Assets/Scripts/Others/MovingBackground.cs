@@ -22,17 +22,17 @@ public class MovingBackground : MonoBehaviour
     private void Start() 
     {
         int bg = GetComponentInParent<RandomBG>().bg;
-        for (int i = -3; i < 5; i++)
-            for (int j = -1; j < 4; j++)
+        for (int i = -4; i <= 3; i++)
+            for (int j = -2; j <= 1; j++)
                 tilemap.SetTile(new Vector3Int(i,j,0),data.BackgroundTiles[bg]);
         
     }
 
     private void Update()
     {
-        if(transform.position.y < -5*4)
-            transform.position = new Vector3(0,other.position.y+4*4,0);
+        if(transform.position.y < -4*4)
+            transform.position = new Vector3(transform.position.x,other.position.y+4*4,0);
 
-        transform.position = new Vector3(0,transform.position.y-speed,0);
+        transform.position = new Vector3(transform.position.x,transform.position.y-speed,0);
     }
 }

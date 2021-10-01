@@ -17,7 +17,7 @@ public class PlayerWallJumpState : PlayerAbilityState
 
         player.InputHandler.UseJumpInput();
         //core.Movement.SetVelocity(playerData.wallJumpVelocity,playerData.wallJumpAngle,wallJumpDirection);
-        core.Movement.WallJump(playerData.wallJumpForce,playerData.wallJumpAngle,wallJumpDirection);
+        core.Movement.WallJump(wallJumpDirection);
         core.Movement.CheckIfShouldFlip(wallJumpDirection);
         // player.JumpState.UseJump();
     }
@@ -26,20 +26,10 @@ public class PlayerWallJumpState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        xInput = player.InputHandler.NormInputX;
-
-        core.Movement.CheckIfShouldFlip(xInput);
         player.Anim.SetFloat("yVelocity",player.Core.Movement.CurrentVelocity.y);
 
-        if(Time.time >= startTime + playerData.wallJumpTime)
+        if(Time.time >= startTime + movement.WallJumpTime)
             isAbilityDone=true;
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-
-        core.Movement.SetVelocityX(playerData.movementVelocity * xInput);
     }
 
     public void DetermineWallJumpDirection(bool isTouchingWall)

@@ -28,7 +28,7 @@ public abstract class Interactable : MonoBehaviour,IInteractable
         center = new Vector2(collider2d.bounds.center.x,collider2d.bounds.center.y);
     }
 
-    protected void OnCollisionEnter2D(Collision2D other)
+    protected virtual void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.tag == "Player" && CheckInteraction(other.transform.position))
             Interact(other);

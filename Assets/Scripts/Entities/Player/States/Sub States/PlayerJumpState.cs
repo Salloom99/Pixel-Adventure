@@ -10,19 +10,19 @@ public class PlayerJumpState : PlayerAbilityState
 
     public PlayerJumpState(Entity entity, string animBoolName) : base(entity, animBoolName)
     {
-        amountOfJumpsLeft = playerData.amountOfJumps;
+        amountOfJumpsLeft = movement.AmountOfJumps;
     }
 
     public override void Enter()
     {
         base.Enter();
         player.InputHandler.UseJumpInput();
-        core.Movement.Jump(playerData.jumpForce);
+        movement.ApplyGroundLinearDrag(1);
+        movement.Jump();
         isAbilityDone = true;
         amountOfJumpsLeft--;
-        player.InAirState.SetIsJumping();
 
-        if(!isGrounded)
+        if(!isGrounded && !isTouchingWall)
             player.Anim.SetBool("doubleJump",true);
     }
 
@@ -36,7 +36,7 @@ public class PlayerJumpState : PlayerAbilityState
 
     public bool CanJump() => amountOfJumpsLeft > 0;
 
-    public void Resetjumps() => amountOfJumpsLeft = playerData.amountOfJumps;
+    public void Resetjumps() => amountOfJumpsLeft = movement.AmountOfJumps;
 
     public void UseJump() => amountOfJumpsLeft--;
 }

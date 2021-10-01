@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be91952bd8ac3ff429461a517e92aed0, type: 3}
   m_Name: TrapsData
   m_EditorClassIdentifier: 
+  bounceVelocity: 20
   box1Life: 1
   box2Life: 5
   box3Life: 5
-  trampolineJumpForce: 2000
+  explosionVelocity: 100
+  trampolineJumpForce: 37
   fanTimer: 5
   weakFanForce: 70
   MidFanForce: 83.385

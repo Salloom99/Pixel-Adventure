@@ -114,7 +114,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.55}
@@ -139,8 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7910536471636621779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5e9090fcbf78d24396e82b4421edeab, type: 3}
+  m_Script: {fileID: 11500000, guid: b6c6706ff25493b429d60a7db1ebbf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraShake: {fileID: 0}
   data: {fileID: 11400000, guid: 9b614346a5f3fa944b6f66c3a0086306, type: 2}

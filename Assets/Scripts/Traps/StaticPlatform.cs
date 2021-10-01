@@ -26,11 +26,11 @@ public class StaticPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.position.y >transform.position.y)
-            other.transform.parent.parent = transform;
+            other.transform.parent = transform;
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        other.transform.parent.parent = null;
+        other.transform.parent = null;
     }
 
     private void FixedUpdate() 

@@ -3,10 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TrapsData", menuName = "Data/TrapsData")]
 public class TrapsData : ScriptableObject 
 {
+
+    [Header("Common")]
+    public float bounceVelocity = 10f;
+
     [Header("Boxes")]
     public int box1Life = 1;
     public int box2Life = 5;
     public int box3Life = 5;
+    public float explosionVelocity = 5f;
 
     [Header("Trampoline")]
     public float trampolineJumpForce = 2000f;

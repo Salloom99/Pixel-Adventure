@@ -10,25 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9dcac52e7339c8d4387b38f374d0a3c4, type: 3}
-  m_Name: PlayerData
+  m_Name: PlayerData 1
   m_EditorClassIdentifier: 
-  movementVelocity: 10
+  movementVelocity: 15
   movementSmooth: 0.1
-  jumpForce: 1200
+  jumpForce: 500
   amountOfJumps: 2
-  wallJumpForce: 1200
-  wallJumpTime: 0
+  wallJumpForce: 900
+  wallJumpTime: 0.1
   wallJumpAngle: {x: 0.3, y: 1}
   coyoteTime: 0
   wallSlideVelocity: 2
-  wallClimbVelocity: 3
-  startOffset: {x: 0, y: 0}
-  stopOffset: {x: 0, y: 0}
-  dashCooldown: 0.5
-  maxHoldTime: 1
-  holdTimeScale: 0.25
-  dashTime: 0.2
-  dashVelocity: 30
-  drag: 10
-  dashEndYMultiplier: 0.2
-  distBetweenAfterImages: 0.5

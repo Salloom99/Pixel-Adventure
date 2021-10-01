@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerGroundedState
 {
+
     public PlayerIdleState(Player entity, string animBoolName) : base(entity, animBoolName)
     {
     }
@@ -11,7 +12,7 @@ public class PlayerIdleState : PlayerGroundedState
     public override void Enter()
     {
         base.Enter();
-        core.Movement.SetVelocityX(0f);
+       
     }
 
     public override void LogicUpdate()
@@ -19,16 +20,23 @@ public class PlayerIdleState : PlayerGroundedState
         base.LogicUpdate();
         //core.Movement.SetVelocityX(0f);
 
-        if(core.Movement.CurrentVelocity.x>playerData.movementVelocity)
-            core.Movement.SetVelocityX(playerData.movementVelocity);
+        // if(core.Movement.CurrentVelocity.x>playerData.movementVelocity)
+        //     core.Movement.SetVelocityX(playerData.movementVelocity);
         
-        if (!isExitingState)
-        {
-            if (xInput != 0)
-            {
-                stateMachine.ChangeState(player.MoveState);
-            }
-        }       
-        
+        // if (!isExitingState)
+        //     return;
+
+        bool cantMove = isTouchingWall && xInput == movement.FacingDirection;
+
+        if(xInput !=0 && !cantMove /* Mathf.Abs(core.Movement.CurrentVelocity.x) > movement.getDeadZone() */)
+            stateMachine.ChangeState(player.MoveState);
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        // core.Movement.CheckIfShouldFlip(xInput);
+        // core.Movement.SetVelocityX(xInput);
     }
 }
