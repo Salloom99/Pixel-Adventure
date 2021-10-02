@@ -10,9 +10,7 @@ public class Box : Interactable,IBreakable
     [SerializeField] protected FruitsData fruitsData;
     [SerializeField] private TrapsData trapsData;
 
-    private int Hits = 0;
-
-    protected int maxHits;
+    protected int Hits;
     protected int friutsNum;
    
 
@@ -41,20 +39,8 @@ public class Box : Interactable,IBreakable
 
     public virtual void Break()
     {
-        GameObject[] fruits = fruitsData.fruits;
-
-        summonedFruits = new List<GameObject>();
-        for (int i = 0; i < friutsNum; i++)
-        {
-            GameObject fruit = Instantiate(fruits[Random.Range(0,8)],transform.position,Quaternion.identity,transform.parent.transform);
-            fruit.GetComponent<Fruit>().SetIstantiated();
-            summonedFruits.Add(fruit);
-        }
-
         breakable.Break();
-        
-        for(int i=0;i<summonedFruits.Count;i++)
-            summonedFruits[i].GetComponent<Rigidbody2D>().velocity =Vector2.right*Random.Range(-1,1)*Random.Range(5,20);
+        ThrowFruits();
     
     }
 
@@ -63,7 +49,7 @@ public class Box : Interactable,IBreakable
         shake = true;
         base.Interact(other);
         
-        Hits++;
+        Hits--;
         GetComponent<Animator>().Play("Hit");
 
         if(IfBelow(other.transform.position))
@@ -71,7 +57,20 @@ public class Box : Interactable,IBreakable
         else if (IfAbove(other.transform.position))
             playerRB.velocity = new Vector2(playerRB.velocity.x,trapsData.bounceVelocity);
 
-        if(Hits >= maxHits)
+        if(Hits <= 0)
             Invoke("Break",0.2f);
+    }
+
+    private void ThrowFruits()
+    {
+        summonedFruits = new List<GameObject>();
+        for (int i = 0; i < friutsNum; i++)
+        {
+            GameObject fruit = Instantiate(fruitsData.fruits[Random.Range(0,8)],transform.position,Quaternion.identity,transform.parent.transform);
+            fruit.GetComponent<Fruit>().SetIstantiated();
+            summonedFruits.Add(fruit);
+        }
+        for(int i=0;i<summonedFruits.Count;i++)
+            summonedFruits[i].GetComponent<Rigidbody2D>().velocity =Vector2.right*Random.Range(-1,1)*Random.Range(5,20);
     }
 }

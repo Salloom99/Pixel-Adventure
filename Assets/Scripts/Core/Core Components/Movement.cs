@@ -106,6 +106,8 @@ public class Movement : CoreComponent
     public void ApplyAirLinearDrag(int xInput)
     {
         if(xInput == 0)
+            RB.velocity = new Vector2(RB.velocity.x*(1-data.extremeAirLinearDrag),RB.velocity.y);
+        else if(CurrentVelocity.y < 0)
             RB.velocity = new Vector2(RB.velocity.x*(1-data.airLinearDrag),RB.velocity.y);
     }
 

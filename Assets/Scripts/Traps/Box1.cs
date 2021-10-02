@@ -6,7 +6,7 @@ public class Box1 : Box
 {
     protected override void Awake()
     {
-        maxHits = 1;
+        Hits = 1;
         friutsNum = 3;
         base.Awake();
 

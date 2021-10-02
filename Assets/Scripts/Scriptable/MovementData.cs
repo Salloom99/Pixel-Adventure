@@ -25,6 +25,7 @@ public class MovementData : ScriptableObject
     public float fallMultiplier = 8f;
     public float lowJumpMultiplier = 5f;
     public float airLinearDrag = 1f;
+    public float extremeAirLinearDrag = 1f;
     // public float inAirMovementVelocity = 5f;
 
     [Header("Wall Slide State")]
