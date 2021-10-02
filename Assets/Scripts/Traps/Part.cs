@@ -9,26 +9,25 @@ public class Part : MonoBehaviour
     private float spriteBlinkingTotalTimer = 0.0f;
     private float spriteBlinkingTotalDuration = 1.0f;
 
-    private bool falled;
+    private Rigidbody2D PartRB;
+
+    private void Start() {
+        PartRB = GetComponent<Rigidbody2D>();
+    }
     
     void Update()
     {
-        if(gameObject.activeSelf && falled)
+        if(gameObject.activeSelf && PartRB.velocity.x ==0)
         {
-            Invoke("DestroyThis",1.2f);
-            Invoke("Blinking",0.2f);
+            Invoke("DestroyThis",1f);
+            Invoke("Blinking",0.1f);
         }
            
-
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-            falled = true;
-
-        GetComponent<Rigidbody2D>().freezeRotation = false;
-        
+        PartRB.freezeRotation = false;   
     }
 
     private void DestroyThis()

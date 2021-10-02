@@ -60,9 +60,6 @@ public class PlayerGroundedState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
 
-
-        movement.ApplyGroundLinearDrag(xInput);
-
         // if(xInput ==0)
         //     movement.ApplyDrag(Time.deltaTime);
         
@@ -91,6 +88,13 @@ public class PlayerGroundedState : PlayerState
         // {
         //     stateMachine.ChangeState(player.DashState);
         // }
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        movement.ApplyGroundLinearDrag(xInput);
     }
 
 }

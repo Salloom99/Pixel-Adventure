@@ -19,11 +19,8 @@ public class PlayerMoveState : PlayerGroundedState
 
         // if (!isExitingState)
         //     return;
-        
-        // if (xInput == 0)
-        //     stateMachine.ChangeState(player.IdleState);
 
-        if(Mathf.Abs(core.Movement.CurrentVelocity.x) < movement.getDeadZone())
+        if(xInput ==0 && Mathf.Abs(core.Movement.CurrentVelocity.x) < movement.getDeadZone())
             stateMachine.ChangeState(player.IdleState);
     }
 

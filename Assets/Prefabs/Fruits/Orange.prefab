@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.6
 --- !u!1 &8074903494122820962
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 8074903494122820962}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b811c855ad7264141a02f8460d1a8926, type: 2}
+  m_Controller: {fileID: 22100000, guid: 5555b47ab7ca4c94f8feb658aec8c14b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

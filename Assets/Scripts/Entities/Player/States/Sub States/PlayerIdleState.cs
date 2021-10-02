@@ -28,15 +28,7 @@ public class PlayerIdleState : PlayerGroundedState
 
         bool cantMove = isTouchingWall && xInput == movement.FacingDirection;
 
-        if(xInput !=0 && !cantMove /* Mathf.Abs(core.Movement.CurrentVelocity.x) > movement.getDeadZone() */)
+        if(xInput !=0 && !cantMove)
             stateMachine.ChangeState(player.MoveState);
-    }
-
-    public override void PhysicsUpdate()
-    {
-        base.PhysicsUpdate();
-
-        // core.Movement.CheckIfShouldFlip(xInput);
-        // core.Movement.SetVelocityX(xInput);
     }
 }

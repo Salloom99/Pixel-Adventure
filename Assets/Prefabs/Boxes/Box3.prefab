@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1853063591613429461}
   - component: {fileID: 7627879653718984232}
   - component: {fileID: 8662663099138374369}
+  - component: {fileID: 1162250717360146637}
   m_Layer: 7
   m_Name: Box
   m_TagString: Untagged
@@ -137,18 +138,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418624998189965964}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a969b0c6683e374a813e3a1cdaffd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHits: 1
-  friutsNum: 10
-  parts:
-  - {fileID: 2129513977015014881}
-  - {fileID: 5707411883713334131}
-  - {fileID: 8254145319877729690}
-  - {fileID: 7244146479536778266}
+  fruitsData: {fileID: 11400000, guid: ce369094a1bd6c5408c4776bf539ac8d, type: 2}
+  trapsData: {fileID: 11400000, guid: 9b614346a5f3fa944b6f66c3a0086306, type: 2}
+--- !u!114 &1162250717360146637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418624998189965964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea122d813999b6b4bbb86df7237e86b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   fruitsData: {fileID: 11400000, guid: ce369094a1bd6c5408c4776bf539ac8d, type: 2}
   trapsData: {fileID: 11400000, guid: 9b614346a5f3fa944b6f66c3a0086306, type: 2}
 --- !u!1 &808819103974631487
@@ -322,12 +330,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &6342366527005092464
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -509,12 +517,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &4023385301716543202
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -697,12 +705,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &6991649837470026535
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -920,12 +928,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &1198551549514014049
 PolygonCollider2D:
   m_ObjectHideFlags: 0

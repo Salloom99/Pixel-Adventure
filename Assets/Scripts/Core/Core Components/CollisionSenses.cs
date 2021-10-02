@@ -59,7 +59,7 @@ public class CollisionSenses : CoreComponent
 
     public bool Ground
     {
-        get => Physics2D.BoxCast(boxCollider.bounds.center,boxCollider.bounds.extents,0f,Vector2.down,groundCheckRadius,whatIsGround);
+        get => Physics2D.BoxCast(boxCollider.bounds.center,boxCollider.bounds.size,0f,Vector2.down,groundCheckRadius,whatIsGround);
     }
 
     public bool WallFront

@@ -5,15 +5,28 @@ using UnityEngine;
 public class Box : Interactable,IBreakable
 {
 
+    protected Breakable breakable;
+
+    [SerializeField] protected FruitsData fruitsData;
+    [SerializeField] private TrapsData trapsData;
+
     private int Hits = 0;
 
-    [SerializeField] private int maxHits = 1;
-    [SerializeField] private int friutsNum = 3;
+    protected int maxHits;
+    protected int friutsNum;
+   
 
-    [SerializeField] private GameObject[] parts;
-    [SerializeField] private FruitsData fruitsData;
-    [SerializeField] private TrapsData trapsData;
+    private Transform[] parts;
     private List<GameObject> summonedFruits;
+
+    protected override void Awake() {
+        breakable = new Breakable(transform);
+        base.Awake();
+        breakable.Awake();
+
+        parts = breakable.parts;
+        breakable.trapsData = trapsData;
+    }
 
 
     protected override void OnCollisionEnter2D(Collision2D other)
@@ -26,7 +39,7 @@ public class Box : Interactable,IBreakable
         base.OnCollisionEnter2D(other);
     }
 
-    public void Break()
+    public virtual void Break()
     {
         GameObject[] fruits = fruitsData.fruits;
 
@@ -37,15 +50,9 @@ public class Box : Interactable,IBreakable
             fruit.GetComponent<Fruit>().SetIstantiated();
             summonedFruits.Add(fruit);
         }
-        this.gameObject.SetActive(false);
-        this.gameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
 
-        foreach(GameObject part in parts)
-        {
-            Rigidbody2D PartRB = part.GetComponent<Rigidbody2D>();
-            Vector2 direction = (this.transform.localPosition-part.transform.localPosition).normalized;
-            PartRB.velocity = direction*trapsData.explosionVelocity;
-        }
+        breakable.Break();
+        
         for(int i=0;i<summonedFruits.Count;i++)
             summonedFruits[i].GetComponent<Rigidbody2D>().velocity =Vector2.right*Random.Range(-1,1)*Random.Range(5,20);
     
@@ -66,10 +73,5 @@ public class Box : Interactable,IBreakable
 
         if(Hits >= maxHits)
             Invoke("Break",0.2f);
-    }
-
-    public override bool CheckInteraction(Vector2 interactor)
-    {
-        return/*  Mathf.Abs(playerRB.velocity.y) > 5f && */(IfAbove(interactor) || IfBelow(interactor));
     }
 }

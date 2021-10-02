@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveVel: 10
   moveAccel: 35
-  groundLinearDrag: 0.1
+  groundLinearDrag: 0.3
   deadZone: 0.05
   movementSmooth: 0.1
   jumpForce: 21
   amountOfJumps: 2
   wallJumpForce: 25
-  wallJumpTime: 0.1
-  wallJumpAngle: {x: 0.1, y: 1}
+  wallJumpTime: 0.05
+  wallJumpAngle: {x: 0.2, y: 1}
   coyoteTime: 0.2
   normalMultiplier: 7
   fallMultiplier: 8
   lowJumpMultiplier: 8
-  airLinearDrag: 0.1
+  airLinearDrag: 0.2
   wallSlideVelocity: 3

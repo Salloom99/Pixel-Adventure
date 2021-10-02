@@ -98,19 +98,14 @@ public class Movement : CoreComponent
 
     public void ApplyGroundLinearDrag(int xInput)
     {
-        // if(xInput == 0)
-        //     RB.drag = data.groundLinearDrag;
-        // else
-        //     RB.drag = 0f;
-
         if(xInput == 0)
             RB.velocity = new Vector2(RB.velocity.x*(1-data.groundLinearDrag),RB.velocity.y);
         
     }
 
-    public void ApplyAirLinearDrag()
+    public void ApplyAirLinearDrag(int xInput)
     {
-        // if(RB.velocity.y < 0)
+        if(xInput == 0)
             RB.velocity = new Vector2(RB.velocity.x*(1-data.airLinearDrag),RB.velocity.y);
     }
 

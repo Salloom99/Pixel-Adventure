@@ -73,9 +73,7 @@ public class PlayerInAirState : PlayerState
         // grabInput = player.InputHandler.GrabInput;
         // dashInput = player.InputHandler.DashInput;
 
-        core.Movement.SetVelocityX(xInput);
-        // movement.ApplyDrag(Time.deltaTime);
-        
+        // movement.ApplyDrag(Time.deltaTime);        
 
         if (isGrounded && core.Movement.CurrentVelocity.y < 0.01f)
             stateMachine.ChangeState(player.LandState);
@@ -112,12 +110,22 @@ public class PlayerInAirState : PlayerState
 
             if(movement.CurrentVelocity.y < 0)
                 movement.SetFallMultiplier(Movement.FallMultiplier.Fall);
-            movement.ApplyAirLinearDrag();
+            
             
             player.Anim.SetFloat("yVelocity", core.Movement.CurrentVelocity.y);
+
         }
 
     }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+
+        core.Movement.SetVelocityX(xInput);
+        movement.ApplyAirLinearDrag(xInput);
+    }
+
 
     // private void CheckJumpMultiplier()
     // {
