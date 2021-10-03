@@ -7,6 +7,10 @@ public class MovementData : ScriptableObject
     public float maxMoveVel = 10f;
     public float moveAccel = 1f;
     public float groundLinearDrag = 1f;
+    public float normalLinearDrag = 0f;
+    public float sandLinearDrag = 1f;
+    public float mudLinearDrag = 1f;
+    public float iceLinearDrag = 1f;
     public float deadZone = 0.05f;
     public float movementSmooth = 0.15f;
 

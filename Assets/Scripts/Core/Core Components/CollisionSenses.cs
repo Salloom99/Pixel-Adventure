@@ -54,12 +54,12 @@ public class CollisionSenses : CoreComponent
 
     public bool Ceiling
     {
-        get => Physics2D.OverlapCircle(CeilingCheck.position, groundCheckRadius, whatIsGround);
+        get => Physics2D.BoxCast(ceilingCheck.position,new Vector2(boxCollider.size.x,0.2f),0f,Vector2.up,0.1f,whatIsGround);
     }
 
     public bool Ground
     {
-        get => Physics2D.BoxCast(boxCollider.bounds.center,boxCollider.bounds.size,0f,Vector2.down,groundCheckRadius,whatIsGround);
+        get => Physics2D.BoxCast(groundCheck.position,new Vector2(boxCollider.size.x,0.2f),0f,Vector2.down,0.1f,whatIsGround);
     }
 
     public bool WallFront

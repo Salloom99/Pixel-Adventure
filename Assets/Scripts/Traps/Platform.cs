@@ -29,7 +29,7 @@ public class Platform : Interactable
         shake =true;
         base.Interact(other);
         goingToP1 = true;
-        other.transform.parent.parent = transform;
+        other.transform.parent = transform;
     }
 
     public override bool CheckInteraction(Vector2 interactor)
@@ -40,7 +40,7 @@ public class Platform : Interactable
     private void OnCollisionExit2D(Collision2D other) 
     {
         goingToP1=false;
-        other.transform.parent.parent = null;
+        other.transform.parent = null;
 
     }
 

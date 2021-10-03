@@ -449,7 +449,6 @@ GameObject:
   - component: {fileID: 314794118}
   - component: {fileID: 314794117}
   - component: {fileID: 314794116}
-  - component: {fileID: 314794119}
   m_Layer: 5
   m_Name: Next
   m_TagString: Untagged
@@ -570,21 +569,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314794114}
   m_CullTransparentMesh: 1
---- !u!114 &314794119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314794114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!1 &331165997
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +581,6 @@ GameObject:
   - component: {fileID: 331166001}
   - component: {fileID: 331166000}
   - component: {fileID: 331165999}
-  - component: {fileID: 331166002}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -718,21 +701,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331165997}
   m_CullTransparentMesh: 1
---- !u!114 &331166002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331165997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
-  m_EffectDistance: {x: 1, y: 1}
-  m_UseGraphicAlpha: 1
 --- !u!1 &336789486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2197,8 +2165,8 @@ PlatformEffector2D:
     m_Bits: 64
   m_RotationalOffset: 0
   m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 150
+  m_UseOneWayGrouping: 1
+  m_SurfaceArc: 160
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -4897,7 +4865,6 @@ GameObject:
   - component: {fileID: 2115769380}
   - component: {fileID: 2115769379}
   - component: {fileID: 2115769378}
-  - component: {fileID: 2115769383}
   m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
@@ -12918,19 +12885,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &2115769383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115769376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 606614d3e1b89da489d70ed5d5235142, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  friction: 0.5
 --- !u!1 &2126156097
 GameObject:
   m_ObjectHideFlags: 0
@@ -13096,6 +13050,10 @@ PrefabInstance:
     - target: {fileID: 4989337955769715837, guid: 162ac7464f7829d4883853495188a1d3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906089306904021452, guid: 162ac7464f7829d4883853495188a1d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.94
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 162ac7464f7829d4883853495188a1d3, type: 3}

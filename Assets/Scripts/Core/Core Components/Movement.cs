@@ -10,6 +10,8 @@ public class Movement : CoreComponent
     public bool CanSetVelocity { get; set; }
     public Vector2 CurrentVelocity { get; private set; }
     public float surfaceFriction { get; private set; }
+    private float drag;
+    private float endDrag;
 
     #region getters
     public float WallJumpTime { get=> data.wallJumpTime; }
@@ -29,6 +31,9 @@ public class Movement : CoreComponent
 
         FacingDirection = 1;
         CanSetVelocity = true;
+
+        drag = data.normalLinearDrag;
+        endDrag = data.groundLinearDrag;
     }
 
     public void LogicUpdate()
@@ -99,7 +104,9 @@ public class Movement : CoreComponent
     public void ApplyGroundLinearDrag(int xInput)
     {
         if(xInput == 0)
-            RB.velocity = new Vector2(RB.velocity.x*(1-data.groundLinearDrag),RB.velocity.y);
+            RB.velocity = new Vector2(RB.velocity.x*(1-endDrag),RB.velocity.y);
+        else
+            RB.velocity = new Vector2(RB.velocity.x*(1-drag),RB.velocity.y);
         
     }
 
@@ -161,10 +168,22 @@ public class Movement : CoreComponent
 
     public float getDeadZone()=> data.deadZone;
 
-    public void SetFriction(float value)
+    public void SetDrag(float value)
     {
-        surfaceFriction = value;
+        drag = value;
     }
+
+    public void SetEndDrag(float value)
+    {
+        endDrag = value;
+    }
+
+    public void ResetDrag()
+    {
+        drag = data.normalLinearDrag;
+        endDrag = data.groundLinearDrag;
+    }
+
 
     public void OldCheckIfShouldFlip(int xInput)
     {
