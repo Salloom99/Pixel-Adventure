@@ -253,7 +253,7 @@ MonoBehaviour:
   wallCheck: {fileID: 6987248592444284820}
   ceilingCheck: {fileID: 1413215044046079638}
   groundCheckRadius: 0.5
-  wallCheckDistance: 0.4
+  wallCheckDistance: 0.37
   whatIsGround:
     serializedVersion: 2
     m_Bits: 5248

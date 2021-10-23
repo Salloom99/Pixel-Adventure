@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class Saw : Spikes
 {
-
-    
+    [SerializeField] private Vector2 point1;
+    [SerializeField] private Vector2 point2;
     public float speed;
-    public float amount;
-
-    private float timer;
 
     private void FixedUpdate() 
     {
-        transform.localPosition =new Vector3(transform.localPosition.x,transform.localPosition.y + Mathf.Sin(timer * speed) * amount,0);
+        transform.localPosition = Vector2.Lerp(point1,point2,Mathf.Sin(Time.time*speed )*.5f+.5f);
+    }
 
-        timer += Time.deltaTime;
-
-        if(speed == 0)
-            timer =0;
+    private void OnDrawGizmosSelected() {
+        Gizmos.DrawLine(point1+(Vector2)transform.parent.position,point2+(Vector2)transform.parent.position);
     }
 }

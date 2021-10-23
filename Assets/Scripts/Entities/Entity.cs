@@ -23,6 +23,8 @@ public abstract class Entity : MonoBehaviour
     {
         Core = GetComponentInChildren<Core>();
         Anim = GetComponentInChildren<Animator>();
+        MovementCollider = GetComponent<BoxCollider2D>();
+        RB = GetComponent<Rigidbody2D>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
     }
 }

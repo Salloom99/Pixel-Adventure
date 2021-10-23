@@ -813,18 +813,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Center.y
-      value: -1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Extent.y
-      value: 1.75
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165731, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -873,10 +861,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spiked Ball (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165733, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.y
-      value: -3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: W
       value: 4
@@ -892,6 +876,14 @@ PrefabInstance:
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: CircleMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447373562634256809, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675790377740515687, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.275
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
@@ -1157,18 +1149,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Center.y
-      value: -1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Extent.y
-      value: 1.75
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165731, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1217,10 +1197,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spiked Ball (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165733, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.y
-      value: -3.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: W
       value: 6
@@ -1228,6 +1204,14 @@ PrefabInstance:
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: ThetaZero
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447373562634256809, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_Size.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675790377740515687, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
@@ -1444,18 +1428,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -120
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Center.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_LocalAABB.m_Extent.y
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165731, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1504,10 +1476,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spiked Ball (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 5963967548095165733, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_Spline.m_ControlPoints.Array.data[0].position.y
-      value: -3
-      objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: W
       value: 4
@@ -1523,6 +1491,14 @@ PrefabInstance:
     - target: {fileID: 5963967548095165790, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
       propertyPath: CircleMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447373562634256809, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675790377740515687, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
@@ -12771,8 +12747,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5963967548095165730, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
-      propertyPath: m_DynamicOccludee
+    - target: {fileID: 1002963647685453665, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5963967548095165731, guid: 6b8af0a53d011514c9ead109254375e4, type: 3}

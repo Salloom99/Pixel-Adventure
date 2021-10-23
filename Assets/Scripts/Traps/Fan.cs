@@ -11,13 +11,17 @@ public class Fan : MonoBehaviour
     private Animator Anim;
     private AreaEffector2D Effector;
     private ParticleSystem PS;
+    private Collider2D Collider;
 
     [SerializeField] private TrapsData data;
+
+    private Player player;
     
     private void Awake()
     {
         Anim = GetComponent<Animator>();
         Effector = GetComponent<AreaEffector2D>();
+        Collider = GetComponent<Collider2D>();
         PS = GetComponent<ParticleSystem>();
     }
 
@@ -39,6 +43,16 @@ public class Fan : MonoBehaviour
         Effector.enabled = value;
         if(On) PS.Play(); else PS.Stop();
         timer = Time.time;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        player = other.GetComponent<Player>();
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(player !=null && On){
+            player.RB.AddForce(Vector2.right*30);
+            Debug.Log("applying force");}
     }
 
 }

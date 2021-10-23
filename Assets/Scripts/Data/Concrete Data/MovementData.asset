@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: MovementData
   m_EditorClassIdentifier: 
   maxMoveVel: 10
-  moveAccel: 35
+  moveAccel: 45
   groundLinearDrag: 0.3
+  normalLinearDrag: 0
+  sandLinearDrag: 1
+  mudLinearDrag: 1
+  iceLinearDrag: 1
   deadZone: 0.05
   movementSmooth: 0.1
   jumpForce: 21.5

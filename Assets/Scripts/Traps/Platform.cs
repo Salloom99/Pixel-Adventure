@@ -10,8 +10,8 @@ public class Platform : Interactable
     private Rigidbody2D PlatformRB;
     private Animator Anim;
 
-    private Transform point1;
-    private Transform point2;
+    [SerializeField] private Vector2 point1;
+    [SerializeField] private Vector2 point2;
 
     [SerializeField] private TrapsData data;
 
@@ -20,8 +20,6 @@ public class Platform : Interactable
         base.Awake();
         PlatformRB = GetComponent<Rigidbody2D>();
         Anim = GetComponent<Animator>();
-        point1 = transform.parent.GetChild(0);
-        point2 = transform.parent.GetChild(1);
     }
 
     public override void Interact(Collision2D other)
@@ -47,7 +45,7 @@ public class Platform : Interactable
     private void FixedUpdate() 
     {
         
-        if(goingToP1 && (transform.localPosition.y < point1.localPosition.y || transform.localPosition.x > point1.localPosition.x))
+        if(goingToP1 && (transform.localPosition.y < point1.y || transform.localPosition.x > point1.x))
         {
             //PlatformRB.velocity = direction(point2,point1)*data.platformSpeed;
             transform.Translate(direction(point2,point1)*data.platformSpeed);
@@ -55,7 +53,7 @@ public class Platform : Interactable
             Anim.SetBool("movingToP2",false);
         }
             
-        else if(!goingToP1 && (transform.localPosition.y > point2.localPosition.y || transform.localPosition.x < point2.localPosition.x))
+        else if(!goingToP1 && (transform.localPosition.y > point2.y || transform.localPosition.x < point2.x))
         {
             //PlatformRB.velocity = direction(point1,point2)*data.platformSpeed;
             transform.Translate(direction(point1,point2)*data.platformSpeed);
@@ -70,9 +68,14 @@ public class Platform : Interactable
         }
     }
 
-    private Vector2 direction(Transform point1,Transform point2)
+    private Vector2 direction(Vector2 point1,Vector2 point2)
     {
-        return new Vector2(point2.localPosition.x-point1.localPosition.x,point2.localPosition.y-point1.localPosition.y).normalized;
+        return (point2 - point1).normalized;
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.parent.position+(Vector3)point1,GetComponent<Collider2D>().bounds.size);
     }
 
 

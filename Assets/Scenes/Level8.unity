@@ -566,6 +566,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Falling Platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991230, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
 --- !u!1001 &478940938
@@ -1137,6 +1145,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Falling Platform (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991230, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
 --- !u!1 &1482726986
@@ -1621,6 +1637,14 @@ PrefabInstance:
     - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
       propertyPath: m_Name
       value: Falling Platform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991230, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
@@ -2392,7 +2416,7 @@ GameObject:
   - component: {fileID: 4730888573102856840}
   - component: {fileID: 4730888573102856841}
   - component: {fileID: 4730888573102856842}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Platforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12210,6 +12234,14 @@ PrefabInstance:
     - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
       propertyPath: m_Name
       value: Falling Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991229, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053848750050991230, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}
+      propertyPath: m_SurfaceArc
+      value: 160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc1392d73d38ab5438792f6f9f027672, type: 3}

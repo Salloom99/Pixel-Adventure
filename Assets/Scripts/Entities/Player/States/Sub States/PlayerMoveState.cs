@@ -19,8 +19,9 @@ public class PlayerMoveState : PlayerGroundedState
 
         // if (!isExitingState)
         //     return;
+        bool cantMove = isTouchingWall && xInput == movement.FacingDirection;
 
-        if(xInput ==0 && Mathf.Abs(core.Movement.CurrentVelocity.x) < movement.getDeadZone())
+        if(xInput ==0 && Mathf.Abs(core.Movement.CurrentVelocity.x) < movement.getDeadZone() || cantMove)
             stateMachine.ChangeState(player.IdleState);
     }
 

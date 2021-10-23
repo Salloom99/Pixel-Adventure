@@ -11,16 +11,14 @@ public class StaticPlatform : MonoBehaviour
 
     private Animator Anim;
 
-    private Transform point1;
-    private Transform point2;
+    [SerializeField] private Vector2 point1;
+    [SerializeField] private Vector2 point2;
 
     [SerializeField] private TrapsData data;
 
     private void Awake() 
     {
         Anim = GetComponent<Animator>();
-        point1 = transform.parent.GetChild(0);
-        point2 = transform.parent.GetChild(1);
     }
 
 
@@ -35,7 +33,7 @@ public class StaticPlatform : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        if(goingToP1 && (transform.localPosition.y > point1.localPosition.y || transform.localPosition.x > point1.localPosition.x))
+        if(goingToP1 && (transform.localPosition.y > point1.y || transform.localPosition.x > point1.x))
         {
             transform.Translate(direction(point2,point1)*data.platformSpeed);
             Anim.SetBool("movingToP1",true);
@@ -43,14 +41,14 @@ public class StaticPlatform : MonoBehaviour
             goingToP2 = false;
         }
             
-        if(goingToP2 && (transform.localPosition.y < point2.localPosition.y || transform.localPosition.x < point2.localPosition.x))
+        if(goingToP2 && (transform.localPosition.y < point2.y || transform.localPosition.x < point2.x))
         {
             transform.Translate(direction(point1,point2)*data.platformSpeed);
             Anim.SetBool("movingToP2",true);
             Anim.SetBool("movingToP1",false);
             goingToP1 = false;
         }
-        if(transform.localPosition.y >= point1.localPosition.y && transform.localPosition.x <= point1.localPosition.x)
+        if(transform.localPosition.y >= point1.y && transform.localPosition.x <= point1.x)
         {
             if(!waiting)
                 {
@@ -60,7 +58,7 @@ public class StaticPlatform : MonoBehaviour
                     Invoke("SetGoingToP2",data.platformWaitTime);
                 }
         }
-        if(transform.localPosition.y <= point2.localPosition.y && transform.localPosition.x >= point2.localPosition.x)
+        if(transform.localPosition.y <= point2.y && transform.localPosition.x >= point2.x)
         {
             if(!waiting)
                 {
@@ -84,8 +82,13 @@ public class StaticPlatform : MonoBehaviour
         waiting = false;
     }
 
-    private Vector2 direction(Transform point1,Transform point2)
+    private Vector2 direction(Vector2 point1,Vector2 point2)
     {
-        return new Vector2(point2.localPosition.x-point1.localPosition.x,point2.localPosition.y-point1.localPosition.y).normalized;
+        return (point2 - point1).normalized;
+    }
+
+    private void OnDrawGizmosSelected() {
+        Gizmos.color = Color.gray;
+        Gizmos.DrawCube(transform.parent.position+(Vector3)point2,GetComponent<Collider2D>().bounds.size);
     }
 }

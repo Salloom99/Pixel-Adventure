@@ -74,4 +74,15 @@ public class Player : Entity
     {
         dustPS.Play();
     }
+
+    public void Die()
+    {
+        MovementCollider.enabled = false;
+        Anim.Play("Hit");
+        RB.velocity = new Vector2(RB.velocity.x,20);
+        enabled = false;
+        Invoke("DestroyOB",2f);
+    }
+
+    private void DestroyOB() => Destroy(gameObject);
 }

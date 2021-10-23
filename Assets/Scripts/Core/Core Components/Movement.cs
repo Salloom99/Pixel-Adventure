@@ -101,6 +101,11 @@ public class Movement : CoreComponent
         }        
     }
 
+    public void Push(Vector2 direction,float force)
+    {
+        RB.MovePosition(core.transform.parent.position+(Vector3)direction*force);
+    }
+
     public void ApplyGroundLinearDrag(int xInput)
     {
         if(xInput == 0)
