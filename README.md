@@ -1,4 +1,4 @@
 # Pixel-Adventure
-A simple 2D game <br>
-Pixel art assetes by the great artist Pixel Frog twitter : https://twitter.com/_PixelFrog <br>
-State machine scripts by Bardent YT : https://www.youtube.com/c/Bardent
+A Unity copy of the game presented in this site : https://pixelfrog-assets.itch.io/pixel-adventure-1  
+Pixel art assetes by the great artist Pixel Frog his twitter account : https://twitter.com/_PixelFrog  
+State machine and Core logic scripts by Bardent YT : https://www.youtube.com/c/Bardent
